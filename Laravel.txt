@@ -1,0 +1,103 @@
+Laravel:
+
+Web routes:
+Page to another link will go in= routes->web.php
+
+Views:(Blade)
+resources->views
+It should always be like name.blade.php 
+view('','') First arg is work with browser and 2nd with the page name of the name.blade.php
+
+Paasing data to the views:
+In blade syntax start with @
+to pass the data view has 2nd parameter like view('',['Var_name'=>$Same_name as array])
+
+Controllers:
+app->Http->Controller
+call this controller in views 2nd argument
+Logic is here in controller
+
+blade templating:
+@yield('name')
+@extends('page name that you want to view on every page')
+@section('same-name as yield') @endsetion
+
+Example:(Dyanmic name for the page)
+@yield('title','deafult_name')
+@section('title','Name')
+
+
+Database:
+change the database name and type in .env file
+then run php artisan migrate(Schema::defaultStringLength(191);add this in appserviceproviders.php in boot method for avoiding length error)
+database->migrations (here new tables migrations will go) then run on cmd(php artisan migrate:rollback then php artisan migrate)[rollback:it rollbacks the all migrations and after migrating again it migrates the database ]
+php artisan migrate:fresh(This dropes all the table and create new again)
+
+Adding through form:
+for 419 error=>add @csrf above closing form tag
+
+Form validation:
+laravel provides inbuilt validate method for validation
+and $errors to display that errors on page
+link: https://laravel.com/docs/master/validation#rule-email
+
+
+@incldue '' for adding another page
+
+
+
+
+ return view('internals.customers',[
+            'activeCustomers' => $activeCustomers,
+            'inactiveCustomers' => $inactiveCustomers,
+        ]);
+
+
+For above function there is shortcut of compact:
+ return view('internals.customers',compact('activeCustomers','inactiveCustomers'));
+    }
+
+
+Model Scopes and mass assignment:
+app->providers
+You can declare here function and use it in controller
+
+
+Belongsto and HasMany (Its like primary and foreign key relation)
+
+
+Route::get('customers','CustomersController@index');
+Route::get('customers/create','CustomersController@create');
+Route::post('customers','CustomersController@store');
+Route::get('customers/{customer}','CustomersController@show'); here {} means variable
+
+
+firstOrFail method gives only if it exits otherwise not found It used to avoid sqlInjection errors
+
+
+public function show( Customer $customer)  //This is route model binding so becz of this no need to fetch the record like below line
+    {
+            //Another way
+            //        $customer = Customer::where('id',$customer) -> firstOrFail();
+
+        return view('customers.show',compact('customer'));
+    }
+
+
+
+For email allowed your email to less secure then only it will send mail
+
+Middleware:
+You can use only and except method to just restrict on your choice with out this everything will be lock
+ $this -> middleware('auth') -> except(['index']);
+
+Custom Middleware:
+Make: php artisan make:middleware name
+Give the path in Kernel.php(App->Http)(Path: \App\Http\Middleware\Any-name that you give to middleware::class,)
+Paste this also in web method of that page(Method:middlewareGroups->web)
+And if apply it some specific method then:paste path in $routeMiddleware with some name
+
+For Frontend:
+Always run foll command:
+npm install
+npn run watch(this will watch every changes in scss and convert them into public)

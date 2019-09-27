@@ -1,0 +1,201 @@
+.game-container {
+        position: relative;
+        width: 100%;
+        cursor: none;
+        overflow: hidden;
+
+            #forest {
+                background-image: url("../../images/forest.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                width: 100%;
+                height: 100vh;
+
+                #tree{
+                    width: 30%;
+                    position: absolute;
+                    top: 116px;
+                    left: 36px;
+                    img{
+                        width:100%;
+                    }
+                }
+
+                #monkey {
+                    width: 10%;
+                    position: absolute;
+                    top: 415px;
+                    right: 73px;
+
+                    img {
+                        width: 100%;
+                    }
+                  }
+
+                #tiger {
+                    width: 11%;
+                    position: absolute;
+                    top: 314px;
+                    left: 194px;
+                    opacity: 0;
+                    &.animate{
+                        animation: look 4s linear 2 ;
+                    }
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                #squirrel {
+                    width: 16%;
+                    position: absolute;
+                    top: 215px;
+                    right: -151px;
+                    &.animate{
+                        animation: run 4s linear 5 ;
+                    }
+
+                     img {
+                        width: 100%;
+                    }
+                }
+
+                #horse {
+                    width: 20%;
+                    position: absolute;
+                    top: 395px;
+                    left: -273px;
+                    &.animate{
+                        animation: walk 4s ease-in 2;
+                    }
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                #bird {
+                    width: 9%;
+                    position: absolute;
+                    top: 52px;
+                    left: -121px;
+                    &.animate{
+                        animation: fly1 4s ease-out 3;
+                    }
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                #eagle{
+                    width: 8%;
+                    position: absolute;
+                    right: -144px;
+                    top: 8px;
+                    &.animate{
+                        animation: fly2 4s ease 2;
+                    }
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                #target{
+                    width: 10%;
+                    position: absolute;
+                    transition:0.1s;
+                    tarnsform:translate(-50%,-50%);
+                    pointer-events: none;
+
+                    img{
+                        width: 100%;
+                    }
+                }
+                .text{
+                    background-color: white;
+                    opacity: 0.8;
+                    width:15%;
+                   position: absolute;
+                    top:50px;
+                    left:34px;
+                    p{
+                        margin: 0;
+                    }
+                    #score{
+                        color: tomato;
+                        font-size: 2rem;
+                        padding:2% 2% 0;
+                        font-family: Broadway ;
+                        font-style: italic;
+
+                    }
+                    #timer{
+                        color: tomato;
+                        font-size: 2rem;
+                        padding:0 2% ;
+                        font-family: Broadway ;
+                        font-style: italic;
+                    }
+                }
+
+
+    }
+    #dashboard {
+        display: none;
+
+        &.result {
+            width: 50%;
+            display: block;
+            background-color: white;
+            color: tomato;
+            font-size: 25px;
+            position: absolute;
+            top:249px;
+            margin: 0 25%;
+            text-align: center;
+            opacity: 3;
+        }
+        p{
+            color: slateblue;
+            font-size: 30px;
+        }
+    }
+
+
+}
+
+img.clickEffect{
+    position: absolute;
+    cursor: none;
+    animation:clickEffect 0.4s ;
+
+}
+@keyframes clickEffect { 0%{opacity:1;} 100%{opacity:1;} }
+
+@keyframes run {from{left:100%;}to{left:77%;}}
+@keyframes walk {
+    0%{left:-25%;}
+    100%{left:100%;}
+}
+
+@keyframes fly1 {
+    0% { left:-5%; top:16%;}
+    30% { left:20%; top:8%;}
+    50% { left:40%; top:16%;}
+    75% { left:60%; top:10%;}
+    85% { left:80%; top:16%;}
+    100% { left:100%; top:8%;}}
+
+@keyframes fly2 {
+    0% { left:100%; top:10%;}
+    30% { left:80%; top:20%;}
+    50% { left:60%; top:30%;}
+    75% { left:40%; top:25%;}
+    85% { left:20%; top:30%;}
+    100% { left:-5%; top:20%;}}
+
+@keyframes look {
+    0%{opacity: 0.5}
+    20%{opacity: 0.9}
+}

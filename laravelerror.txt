@@ -1,0 +1,19 @@
+php artisan migrate:
+Add this in file:(AppServiceProvider.php)
+
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+    {
+        Schema::defaultStringLength(191);
+    }
+
+
+auth:
+composer require laravel/ui
+php artisan ui vue --auth
+
+php artisan migrate
+
+npm install
+npm run watch
